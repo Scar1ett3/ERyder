@@ -11,8 +11,7 @@ public class ERyder {
         this.isAvailable = isAvailable;
         this.kmDriven = kmDriven;
     }
-    public ERyder(){
-    }
+    public ERyder(){}
     public void ride(){
         if(isAvailable == true && batteryLevel >= 10){
            System.out.println("You can ride this bike.");
@@ -50,6 +49,6 @@ public class ERyder {
     }
     public void setBatteryLevel(int batteryLevel){
         if(batteryLevel>=0 && batteryLevel<=100){this.batteryLevel = batteryLevel;}
-        else {System.out.println("The batteryLevel must be from 0 to 100");}
+        else {System.out.println("The batteryLevel must be a integer from 0 to 100");}
     }
 }
