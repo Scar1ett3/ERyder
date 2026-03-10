@@ -7,6 +7,7 @@ public class Main {
         bike2.printBikeDetails();
         bike2.printRideDetails(30);
         bike2.ride();
-        bike1.kmDriven = 1;
+        System.out.println("Can't use the private method directly. Must use another public method.");
+        System.out.println(bike2.getTotalFare(30));
     }
 }

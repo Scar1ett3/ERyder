@@ -51,6 +51,9 @@ public class ERyder {
         return usageInMinutes*PER_MINUTE_FARE+BASE_FARE;
     }
 
+    public double getTotalFare(int usageInMinutes){
+        return calculateFare(usageInMinutes);
+    }
     public void ride(){
         if(isAvailable == true && batteryLevel >= 10){
            System.out.println("You can ride this bike.");
