@@ -22,24 +22,19 @@ public class Feedback {
         return email;
     }
     public void analyseFeedBack(boolean isConcatenation, String sent1, String sent2,String sent3,String sent4,String sent5){
-            if(isConcatenation){
-                completeFeedback = feedbackUsingConcatenation(sent1,sent2,sent3,sent4,sent5);
-                checkFeedbackLength(completeFeedback);
-                createReviewID(firstName, lastName, completeFeedback);
-            }else{
-                completeFeedback = feedbackUsingStringBuilder(sent1, sent2,sent3,sent4,sent5).toString();
-                checkFeedbackLength(completeFeedback);
-                createReviewID(firstName, lastName, completeFeedback);
-            }
+        if(isConcatenation){
+            completeFeedback = feedbackUsingConcatenation(sent1,sent2,sent3,sent4,sent5);
+            checkFeedbackLength(completeFeedback);
+            createReviewID(firstName, lastName, completeFeedback);
+        }else{
+            completeFeedback = feedbackUsingStringBuilder(sent1, sent2,sent3,sent4,sent5).toString();
+            checkFeedbackLength(completeFeedback);
+            createReviewID(firstName, lastName, completeFeedback);
+        }
     }
     private String feedbackUsingConcatenation(String sent1,String sent2,String sent3,String sent4,String sent5){
-        String concatenatedFeedback=" ";
-        concatenatedFeedback+=sent1;
-        concatenatedFeedback+=sent2;
-        concatenatedFeedback+=sent3;
-        concatenatedFeedback+=sent4;
-        concatenatedFeedback+=sent5;
-        //concatenatedFeedback = sent1+" "+sent2+...
+        String concatenatedFeedback="";
+        concatenatedFeedback = sent1+" "+sent2+" "+sent3+" "+sent4+" "+sent5;
         return concatenatedFeedback;
     }
     private StringBuilder feedbackUsingStringBuilder(String sent1,String sent2,String sent3,String sent4,String sent5){
@@ -57,18 +52,18 @@ public class Feedback {
         }
     }
     private void createReviewID(String firstName,String lastName,String completeFeedBack){
-        reviewID+=(firstName+lastName).substring(2,6).toUpperCase();
-        reviewID+=(completeFeedBack.substring(10,15).toLowerCase());
+        reviewID=(firstName+lastName).substring(2,6).toUpperCase();
+        reviewID+=completeFeedBack.substring(10,15).toLowerCase();
         reviewID+=(completeFeedBack.length());
         reviewID+="_";
         reviewID+=System.currentTimeMillis();
-        reviewID.replace(" ", "");
+        reviewID=reviewID.replace(" ", "");
     }
 
     @Override
     public String toString(){
-        return "Feedback from" + firstName+ " "+lastName+" {"+email+"}\n\n"+
-        "Feedback: "+completeFeedback+"\nIf the feedback is long?"+longFeedback+
-        "The review ID: "+reviewID;
+        return "=========================\nFeedback from " + firstName+ " "+lastName+" {"+email+"}\n\n"+
+        "Feedback: "+completeFeedback+"\n\nIf the feedback is long than 500? "+longFeedback+
+        "\n\nThe review ID: "+reviewID+"\n===========================";
     }
 }
