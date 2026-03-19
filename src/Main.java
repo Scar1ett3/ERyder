@@ -19,5 +19,6 @@ public class Main {
         System.out.println(feedback);
         UserRegistration userRegistration = new UserRegistration();
         userRegistration.registration();
+        System.out.println(userRegistration);
     }
 }

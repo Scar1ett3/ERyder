@@ -56,7 +56,7 @@ public class UserRegistration {
         dateOfBirth = input.nextLine();
         System.out.println("Checking your age validity...\n");
         LocalDate dob = LocalDate.parse(dateOfBirth);
-        analyseAge(dob);
+        ageValid = analyseAge(dob);
 
         System.out.println("Please enter your card number(only Visa, MasterCard, and " + //
                         "American Express cards are accepted): ");
@@ -75,7 +75,6 @@ public class UserRegistration {
         validCVV = analyseCVV(cvv);
 
         finalCheckpoint();
-
         input.close();
 
 
@@ -119,7 +118,7 @@ public class UserRegistration {
         if ((cardNumStr.length()==13 || cardNumStr.length()==15) && cardNumStr.startsWith("4")){
                 cardProvider="VISA";
         }
-        else if(cardNumStr.length()==16 && firstTwoDigits>=51 && firstTwoDigits<=55 && firstFourDigits>=2221 &&firstFourDigits<=2720){
+        else if(cardNumStr.length()==16 && (firstTwoDigits>=51 && firstTwoDigits<=55 || firstFourDigits>=2221 &&firstFourDigits<=2720)){
             cardProvider="MasterCard";
         }
         else if(cardNumStr.length()==15 && (cardNumStr.startsWith("34")||cardNumStr.startsWith("37"))){
