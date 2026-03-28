@@ -27,7 +27,7 @@ public class BikeRental {
             return;
         }
         System.out.println("Simulating e-bike reservation…");
-        reverseBike(bikeID);
+        reserveBike(bikeID);
         viewActiveRentals();
         System.out.println("Simulating the end of the trip…");
         removeTrip(bikeID);
@@ -58,13 +58,13 @@ public class BikeRental {
                         "requested. Please try again later.");
         return null;
     }
-    private void reverseBike(String bikeID){
+    private void reserveBike(String bikeID){
         if(bikeID!=null){
             for(Bike bike:BikeDatabase.bikes){
-                if(bikeID.equals(bikeID))tripStartTime = LocalDateTime.now();
+                if(bikeID.equals(bike.getBikeID()))tripStartTime = LocalDateTime.now();
                 bike.setIsAvailable(false);
                 bike.setLastUsedTime(tripStartTime);
-                System.out.println(" Reserving the bike with the (bikeID). Please following the on-screen instructions." + 
+                System.out.println(" Reserving the bike with the "+bikeID+". Please following the on-screen instructions." + 
                                         "to locate the bike and start your pleasant journey.");
                 ActiveRental activeRental = new ActiveRental(bikeID,emailAddress,tripStartTime);
                 activeRentalsList.add(activeRental);
@@ -92,9 +92,9 @@ public class BikeRental {
                 break;
             }
         }
-        Iterator<Bike>iterator2 = BikeDatabase.bikes.iterator();
-        while(iterator2.hasNext()){
-            Bike bike = iterator2.next();
+        Iterator<Bike>bikeIterator = BikeDatabase.bikes.iterator();
+        while(bikeIterator.hasNext()){
+            Bike bike = bikeIterator.next();
             if(bike.getBikeID().equals(bikeID)){
                 bike.setIsAvailable(true);
                 bike.setLastUsedTime(LocalDateTime.now());

@@ -13,6 +13,7 @@ public class Bike{
         this.lastUsedTime = lastUsedTime;
         this.location = location;
     }
+    
     public int getBatteryLevel() {
         return batteryLevel;
     }
@@ -28,12 +29,13 @@ public class Bike{
     public boolean getIsAvailable(){
         return isAvailable;
     }
-        public void setBikeID(String bikeID) {
+
+    public void setBikeID(String bikeID) {
         this.bikeID = bikeID;
     }
 
-    public void setIsAvailable(boolean available) {
-        isAvailable = available;
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 
     public void setBatteryLevel(int batteryLevel) {

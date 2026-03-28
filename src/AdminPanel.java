@@ -223,6 +223,7 @@ public class AdminPanel {
                     break;
                 }
             } 
+            if(!found)System.out.println("No user found with this email address");
         }
         sc.close();
     }

@@ -9,7 +9,7 @@ public class ActiveRental {
         this.bikeID = bikeID;
     }
 
-    public ActiveRental() { }
+    public ActiveRental() {}
     
     public String getUserEmail() {
         return userEmail;
